@@ -1,6 +1,12 @@
 const Koa = require('koa')
+const bodyParser = require('koa-bodyparser')
+
 const config = require('./model/config')
+
 const app = new Koa();
+
+// 解析post请求体
+app.use(bodyParser())
 
 const router = require('./routes/index')
 
