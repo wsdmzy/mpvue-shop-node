@@ -12,4 +12,10 @@ router.post('/search/addhistoryaction', controllers.search.index.addHistoryActio
 router.post('/search/clearhistoryAction', controllers.search.index.clearHistoryAction)
 router.get('/search/helperaction', controllers.search.index.helperAction)
 
+// 详情页
+router.get('/goods/detailcation', controllers.goods.index.detailAction)
+
+// 收藏相关的接口
+router.post('/collect/addcollect', controllers.collect.index.addCollect)
+
 module.exports = router
