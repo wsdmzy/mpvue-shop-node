@@ -38,13 +38,25 @@ async function detailAction(ctx) {
     collected = true
   }
 
+  // 判断该用户购物车是否含有此商品 统计购物车数量
+  const oldnum = await mysql('nideshop_cart').where({
+    'user_id': openId
+  }).column('number').select()
+  // console.log(oldnum)
+  let allNum = 0
+  if (oldnum.length > 0) {
+    allNum = oldnum.reduce((v,i) => v+i.number,0)
+  }
+  // console.log(allNum)
+
   ctx.body = {
     'info': info[0] || [],
     gallery,
     attribute,
     issue,
     productList,
-    collected
+    collected,
+    allNum
   }
 
 }
