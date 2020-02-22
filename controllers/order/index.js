@@ -2,7 +2,7 @@ const { mysql } = require('../../model/mysql')
 
 async function submitAction(ctx) {
   const { openId, goodsId, allPrice } = ctx.request.body
-
+  // console.log(goodsId)
   // 是否存在订单
   const isOrder = await mysql('nideshop_order').where({
     'user_id': openId
@@ -49,7 +49,7 @@ async function detailAction(ctx) {
     'user_id': openId
   }).select()
   var goodsIds = orderDetail[0].goods_id.split(',')
-  // console.log(orderDetail)
+  console.log(goodsIds)
 
   const list = await mysql('nideshop_cart').andWhere({
     'user_id': openId

@@ -1,5 +1,6 @@
 const { mysql } = require('../../model/mysql')
 
+// 添加购物车
 async function addCart(ctx) {
   const { openId, goodsId, number} = ctx.request.body
   // 判断购物车是否包含此数据
@@ -40,6 +41,20 @@ async function addCart(ctx) {
   }
 }
 
+// 获取购物车列表
+async function cartList(ctx) {
+  const openId = ctx.query.openId
+  // console.log(openId)
+  const data = await mysql('nideshop_cart').where({
+    'user_id': openId
+  }).select()
+
+  ctx.body = {
+    data
+  }
+}
+
 module.exports = {
-  addCart
+  addCart,
+  cartList
 }
