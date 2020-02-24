@@ -34,6 +34,8 @@ router.post('/address/saveAction', controllers.address.index.saveAction)
 
 // 分类相关的
 router.get('/category/categoryNav', controllers.category.index.categoryNav)
+router.get('/category/indexAction', controllers.category.index.indexAction)
+router.get('/category/currentaction', controllers.category.index.currentAction)
 
 // 专题相关
 router.get('/topic/listaction', controllers.topic.index.listaction)
