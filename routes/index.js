@@ -41,4 +41,8 @@ router.get('/category/currentaction', controllers.category.index.currentAction)
 router.get('/topic/listaction', controllers.topic.index.listaction)
 router.get('/topic/detailaction', controllers.topic.index.detailaction)
 
+// 意见反馈
+router.post('/feedback/submitAction', controllers.feedback.index.submitAction)
+
+
 module.exports = router

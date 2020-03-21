@@ -1,7 +1,9 @@
 const { mysql } = require('../../model/mysql')
 
 async function submitAction(ctx) {
-  const { openId, goodsId, allPrice } = ctx.request.body
+  const { openId, goodsId } = ctx.request.body
+  // console.log(goodsId)
+  // console.log(allPrice)
   // console.log(goodsId)
   // 是否存在订单
   const isOrder = await mysql('nideshop_order').where({
@@ -12,9 +14,12 @@ async function submitAction(ctx) {
       'user_id': openId
     }).update({
       goods_id: goodsId,
-      allPrice: allPrice
+      // allPrice: allPrice
     })
     if (data) {
+      // await mysql('nideshop_cart').insert({
+
+      // })
       ctx.body = {
         data: true
       }
